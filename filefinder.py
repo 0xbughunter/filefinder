@@ -1,0 +1,26 @@
+import os
+
+name = raw_input("Provide a file name: ")
+
+class finder:
+    paths = []
+    def file_locator(self):
+        for root, folder, files in os.walk("/"):
+            for act_file in files:
+                if name == act_file:
+                    t_path = root + "/" + act_file
+                    self.paths.append(t_path)
+        self.path_extractor()
+
+    def path_extractor(self):
+        if len(self.paths) > 0:
+            print "{0} exists in the following path(s)".format(name)
+            print "=============================================== \n"
+            for i in self.paths:
+                print i
+        else:
+            print "\n"
+            print "File Doesn't Exists"
+
+if __name__ == "__main__":
+    finder().file_locator()
